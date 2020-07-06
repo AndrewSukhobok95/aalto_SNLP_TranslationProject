@@ -7,8 +7,8 @@ from gensim.models import KeyedVectors
 from gensim.models.keyedvectors import FastTextKeyedVectors
 
 import sys
-sys.path.append('./../')
-sys.path.append(os.path.abspath(os.path.normpath(os.path.join(__file__, "./../../"))))
+# sys.path.append('./../')
+sys.path.append(os.path.abspath(os.path.normpath(os.path.join(__file__, "./../"))))
 import argparse
 
 from TranslationModels.const_vars import *
@@ -67,24 +67,24 @@ if __name__=='__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--train', '-t', action = 'store_true', help='Should training be performed.')
     parser.add_argument('--eval', '-e', action = 'store_true', help='Should evaluation be performed.')
-    parser.add_argument('--type', type = str, choices = ['rnn', 'tr'], help='Type of translation model.', default = 'tr')
+    parser.add_argument('--type', type=str, choices = ['rnn', 'tr'], help='Type of translation model.', default = 'tr')
 
-    parser.add_argument('--src', choices = ['en', 'nl', 'ru'], help='Source language for translation.', default = 'en')
-    parser.add_argument('--tgt', choices = ['en', 'nl', 'ru'], help='Target language for translation.', default = 'nl')
+    parser.add_argument('--src', choices=['en', 'nl', 'ru'], help='Source language for translation.', default = 'en')
+    parser.add_argument('--tgt', choices=['en', 'nl', 'ru'], help='Target language for translation.', default = 'nl')
 
-    parser.add_argument('--source_vm', type = str, help='Word vectors for the source language, filename in the data/vector_models folder.', required = True)
-    parser.add_argument('--target_vm', type = str, help='Paired corpus in the target language, filename in the data/vector_models folder.', required = True)
+    parser.add_argument('--source_vm', type=str, help='Word vectors for the source language, filename in the data/vector_models folder.', required = True)
+    parser.add_argument('--target_vm', type=str, help='Paired corpus in the target language, filename in the data/vector_models folder.', required = True)
 
 
-    parser.add_argument('--hidden_size', type = int, help='', default = 256)
-    parser.add_argument('--keep_chance', '-k', type = float, help='', default = 0.9)
-    parser.add_argument('--max_batches', '-m', type = int, help='Maximum number of batches.', default = None)
-    parser.add_argument('--batch_size', '-b', type = int, help='Batch size.', default = 4)
-    parser.add_argument('--iters', '-i', type = int, help='Number of iterations.', default = 5)
-    parser.add_argument('--gpu', '-g', action = 'store_true', help='Should training be done on GPU.')
+    parser.add_argument('--hidden_size', type=int, help='', default = 256)
+    parser.add_argument('--keep_chance', '-k', type=float, help='', default = 0.9)
+    parser.add_argument('--max_batches', '-m', type=int, help='Maximum number of batches.', default = None)
+    parser.add_argument('--batch_size', '-b', type=int, help='Batch size.', default = 4)
+    parser.add_argument('--iters', '-i', type=int, help='Number of iterations.', default = 5)
+    parser.add_argument('--gpu', '-g', action='store_true', help='Should training be done on GPU.')
     parser.add_argument('--unfiltered', '-u', action = 'store_const', help='Use unfiltered data.', const = '', default = '_filtered')
 
-    parser.add_argument('--target', action = 'extend', type = str, help='Sentence to translate.', default = ['I want a dog'])
+    parser.add_argument('--target', action='append', type=str, help='Sentence to translate.', default = ['I want a dog'])
 
     args = parser.parse_args()
 
@@ -92,12 +92,12 @@ if __name__=='__main__':
         print('Source and target language identical!')
         sys.exit()
 
-    path_src_vw_model_bin = './../data/vector_models/' + args.source_vm + '.bin'
-    path_tgt_vw_model_bin = './../data/vector_models/' + args.target_vm + '.bin'
+    path_src_vw_model_bin = './data/vector_models/' + args.source_vm + '.bin'
+    path_tgt_vw_model_bin = './data/vector_models/' + args.target_vm + '.bin'
 
     vw_src_model, vw_tgt_model = read_vector_models(path_src_vw_model_bin, path_tgt_vw_model_bin)
 
-    translation_models_path = './../data/translation_models/'
+    translation_models_path = './data/translation_models/'
     if not os.path.exists(translation_models_path):
         os.makedirs(translation_models_path)
 
@@ -121,8 +121,8 @@ if __name__=='__main__':
 
     if args.train:
 
-        path_src_train_file = './../data/train_data/' + min(args.src, args.tgt) + '_' + max(args.src, args.tgt) + args.unfiltered + '/' + args.src + '_train.txt' 
-        path_tgt_train_file = './../data/train_data/' + min(args.src, args.tgt) + '_' + max(args.src, args.tgt) + args.unfiltered + '/' + args.tgt + '_train.txt' 
+        path_src_train_file = './data/train_data/' + min(args.src, args.tgt) + '_' + max(args.src, args.tgt) + args.unfiltered + '/' + args.src + '_train.txt'
+        path_tgt_train_file = './data/train_data/' + min(args.src, args.tgt) + '_' + max(args.src, args.tgt) + args.unfiltered + '/' + args.tgt + '_train.txt'
         
         if not all([os.path.isfile(fname) for fname in [path_src_train_file, path_tgt_train_file]]):
             print('Some of the train files given do not exist, perhaps check defaults!')
@@ -140,12 +140,12 @@ if __name__=='__main__':
              )
 
     if args.eval:
-        path_src_test_file = './../data/train_data/' + min(args.src, args.tgt) + '_' + max(args.src, args.tgt) + args.unfiltered + '/' + args.src + '_test.txt' 
-        path_tgt_test_file = './../data/train_data/' + min(args.src, args.tgt) + '_' + max(args.src, args.tgt) + args.unfiltered + '/' + args.tgt + '_test.txt'
+        path_src_test_file = './data/train_data/' + min(args.src, args.tgt) + '_' + max(args.src, args.tgt) + args.unfiltered + '/' + args.src + '_test.txt'
+        path_tgt_test_file = './data/train_data/' + min(args.src, args.tgt) + '_' + max(args.src, args.tgt) + args.unfiltered + '/' + args.tgt + '_test.txt'
 
-        eval_file = './../data/eval_results/' + args.type + "_" + args.src + '_' + args.tgt + '_VM_' + args.source_vm + '_VM_' + args.target_vm + '.txt'
-        if not os.path.exists("./../data/eval_results/"):
-            os.mkdir("./../data/eval_results/")
+        eval_file = './data/eval_results/' + args.type + "_" + args.src + '_' + args.tgt + '_VM_' + args.source_vm + '_VM_' + args.target_vm + '.txt'
+        if not os.path.exists("./data/eval_results/"):
+            os.mkdir("./data/eval_results/")
 
         if not all([os.path.isfile(fname) for fname in [path_src_test_file, path_tgt_test_file]]):
             print('Some of the test files given do not exist, perhaps check defaults!')

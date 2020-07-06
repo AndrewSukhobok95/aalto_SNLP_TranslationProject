@@ -1,22 +1,38 @@
 # NLP_vector_project
 
+(2019)
 
-## Calling the scripts
+## Description:
+
+This repository contains the code for the group project under the Aalto course **Statistical Natural Language Processing**.
+
+Project description from the course page:
+
+> The broad topic of the project is word2vec, but the group has some freedom in narrowing the topic. 
+> The project work is done in groups of 2 or 3 people. The workload is about 2 credits.
+> There are three deadlines:
+> Project group forming: Complete the mandatory entrance test to indicate your intentions and preferences regarding the project work. deadline 14 Jan. Based on your answers, the groups will be formed on January 15 by the course assistants.
+> Topic selection: submit a team abstract (one-paragraph description of the intended topic). deadline 5 Feb.
+> Full project report: submission of the final report. See the details below. deadline 28 April.
+
+The project is done in cooperation with:
+- Rob Verbeek (github: RobZelluf)
+- Kosta Stanojević (github: nedrrelm)
+
+Original repository: https://github.com/RobZelluf/NLP_vector_project
+
+## Instructions:
 
 #### Train
 
 Script location: /TranslationModels/main.py
 
 Example for training:
-
-`python3 main.py -t --type rnn --src en --tgt ru --src_vm ft_en_d100_sg_st --tgt_vm ft_ru_d100_sg_st -m 100000 -b 4 -i 30 -g`
+- `python3 main.py -t --type rnn --src en --tgt ru --source_vm ft_en_d100_sg_st --target_vm ft_ru_d100_sg_st -m 100000 -b 4 -i 30 -g`
 
 Example for evaluation:
-
-`python3 main.py -e --type rnn --src en --tgt ru --src_vm ft_en_d100_sg_st --tgt_vm ft_ru_d100_sg_st -m 100000 -b 4 -i 30 -g`
-`python main.py -e --type rnn --src en --tgt ru --src_vm ft_en_d100_sg_st --tgt_vm ft_ru_d100_sg_st -m 1000`
-
-
+- `python3 main.py -e --type rnn --src en --tgt ru --src_vm ft_en_d100_sg_st --tgt_vm ft_ru_d100_sg_st -m 100000 -b 4 -i 30 -g`
+- `python main.py -e --type rnn --src en --tgt ru --src_vm ft_en_d100_sg_st --tgt_vm ft_ru_d100_sg_st -m 1000`
 
 Description of parameters:
 
