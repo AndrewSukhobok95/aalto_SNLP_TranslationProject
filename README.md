@@ -28,6 +28,15 @@ Original repository: https://github.com/RobZelluf/NLP_vector_project
 
 ## Instructions:
 
+#### Data download and filter
+
+In order to download the data and filter it:
+
+- downloading without data for training vectors:
+    - `python3 download_script.py --skip_raw`
+- splitting the downloaded data in train/test/val:
+    - `python3 utilities/split_subtitles.py --filter`
+
 #### Train
 
 Script location: /TranslationModels/main.py
@@ -135,12 +144,6 @@ This directory must have the following structure:
         - /en_ru_filtered
             - ...
 
-In order to download the data and filter it:
-
-- downloading without data for training vectors:
-    - `python3 download_script.py --skip_raw`
-- splitting the downloaded data in train/test/val:
-    - `python3 utilities/split_subtitles.py --filter`
 
 
 
