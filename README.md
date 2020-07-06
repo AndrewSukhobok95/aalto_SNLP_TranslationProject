@@ -9,10 +9,15 @@ This repository contains the code for the group project under the Aalto course *
 Project description from the course page:
 
 > The broad topic of the project is word2vec, but the group has some freedom in narrowing the topic. 
+> 
 > The project work is done in groups of 2 or 3 people. The workload is about 2 credits.
+>
 > There are three deadlines:
+>
 > Project group forming: Complete the mandatory entrance test to indicate your intentions and preferences regarding the project work. deadline 14 Jan. Based on your answers, the groups will be formed on January 15 by the course assistants.
+>
 > Topic selection: submit a team abstract (one-paragraph description of the intended topic). deadline 5 Feb.
+>
 > Full project report: submission of the final report. See the details below. deadline 28 April.
 
 The project is done in cooperation with:
